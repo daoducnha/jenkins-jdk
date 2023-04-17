@@ -25,14 +25,7 @@ pipeline {
                 echo "Deloying....."
             }
         }
-        stage('Timeout') { 
-            steps {
-                retry(3) {
-                    sh 'I not going to work :(('
-                }
-                
-            }
-        }
+        
     }
     post {
         always {

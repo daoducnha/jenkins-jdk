@@ -15,6 +15,7 @@ public class DemoApplication {
 
 	@GetMapping("/greeting")
 	public String greeting() {
-		return "Hello!";
+		String jdk_version  = System.getProperty("java.version");
+		return "Hello! You are using jdk " + jdk_version;
 	}
 }
