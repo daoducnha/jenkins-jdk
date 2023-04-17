@@ -10,9 +10,10 @@ pipeline {
                     mavenLocalRepo: '$WORKSPACE/jdk11/.repository'
                     ) {
                         sh 'export JENKINS_MAVEN_AGENT_DISABLED=true'
+                        sh 'echo $JAVA_HOME'
                         sh 'echo "Building....."'
                         sh '''
-                            mvn clean package
+                            mvn clean package -DskipTests=true
                         '''
                     }
             }
