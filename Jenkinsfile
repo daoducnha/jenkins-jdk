@@ -8,6 +8,7 @@ pipeline {
                     maven: 'jenkins-maven',
                     jdk: 'JDKv11'
                     ) {
+                        sh 'echo $JAVA_HOME'
                         sh 'echo "Building....."'
                         sh '''
                             mvn clean package
