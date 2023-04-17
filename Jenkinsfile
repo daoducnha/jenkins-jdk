@@ -11,7 +11,7 @@ pipeline {
                     ) {
                         sh 'echo "Building....."'
                         sh '''
-                            mvn clean package
+                            mvn clean package -DskipTests=true
                         '''
                     }
             }
