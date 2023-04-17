@@ -4,26 +4,26 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                withMaven(
-                maven: 'jenkins-maven',
-                jdk: 'JDK 11'
-                ) {
-                    sh 'echo "Building....."'
-                    sh '''
-                        mvn clean package
-                    '''
-                }
+                maven(
+                    maven: 'jenkins-maven',
+                    jdk: 'JDK 11'
+                    ) {
+                        sh 'echo "Building....."'
+                        sh '''
+                            mvn clean package
+                        '''
+                    }
             }
         }
         stage('Test') { 
                 steps {
-                    withMaven(
-                    maven: 'jenkins-maven',
-                    jdk: 'JDK 11'
-                ) {
-                    echo "Testing......" 
-                    sh 'mvn test'
-                }
+                    maven(
+                        maven: 'jenkins-maven',
+                        jdk: 'JDK 11'
+                    ) {
+                        echo "Testing......" 
+                        sh 'mvn test'
+                    }
             }
         }
         stage('Deploy') { 
