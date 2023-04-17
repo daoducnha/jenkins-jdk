@@ -32,7 +32,11 @@ pipeline {
         stage('Deploy') { 
             steps {
                 sh '''
-                    kill -9 $( lsof -t -i:8081)
+                    if [ lsof -t -i:8081 ] 
+                    then
+                        kill -9 $(lsof -t -i:8081)
+                    fi
+                    
                     java -jar target/*.jar
                 '''
             }
