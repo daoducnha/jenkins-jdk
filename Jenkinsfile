@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                maven(
+                withMaven(
                     maven: 'jenkins-maven',
                     jdk: 'JDK 11'
                     ) {
@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Test') { 
                 steps {
-                    maven(
+                    withMaven(
                         maven: 'jenkins-maven',
                         jdk: 'JDK 11'
                     ) {
