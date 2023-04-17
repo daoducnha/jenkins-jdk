@@ -38,6 +38,7 @@ pipeline {
                     fi
                     
                     nohup java -jar target/*.jar > log.log 2>&1 &
+                    sleep 2m
                 '''
             }
         }
