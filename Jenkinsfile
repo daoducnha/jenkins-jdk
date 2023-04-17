@@ -6,7 +6,8 @@ pipeline {
             steps {
                 withMaven(
                     maven: 'jenkins-maven',
-                    jdk: 'JDKv8'
+                    jdk: 'JDK8',
+                    mavenLocalRepo: '$WORKSPACE/jdk8/.repository'
                     ) {
                         sh 'echo "Building....."'
                         sh '''
@@ -19,7 +20,8 @@ pipeline {
                 steps {
                     withMaven(
                         maven: 'jenkins-maven',
-                        jdk: 'JDKv8'
+                        jdk: 'JDK8',
+                        mavenLocalRepo: '$WORKSPACE/jdk8/.repository'
                     ) {
                         echo "Testing......" 
                         sh 'mvn test'
