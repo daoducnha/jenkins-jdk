@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') { 
             withMaven(
-                maven: 'jenkins-maven'
+                maven: 'jenkins-maven',
                 jdk: 'JDK 11'
             ) {
                 sh 'echo "Building....."'
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Test') { 
             withMaven(
-                maven: 'jenkins-maven'
+                maven: 'jenkins-maven',
                 jdk: 'JDK 11'
             ) {
                 echo "Testing......" 
