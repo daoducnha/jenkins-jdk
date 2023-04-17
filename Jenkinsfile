@@ -1,51 +1,39 @@
 pipeline {
     agent any 
     
-    environment {
-        NAME = "DUC"
-        LAST_NAME = "NHA"
-    }
     stages {
         stage('Build') { 
             steps {
-                sh 'echo "Building....."'
-                sh '''
-                    echo "Hello $NAME $LAST_NAME"
-                    ls -lah
-                '''
+                withMaven(
+                    maven: 'jenkins-maven',
+                    jdk: 'JDK 18'
+                    ) {
+                        sh 'echo "Building....."'
+                        sh '''
+                            mvn clean package
+                        '''
+                    }
             }
         }
         stage('Test') { 
-            steps {
-                echo "Testing......" 
+                steps {
+                    withMaven(
+                        maven: 'jenkins-maven',
+                        jdk: 'JDK 8'
+                    ) {
+                        echo "Testing......" 
+                        sh 'mvn test'
+                    }
             }
         }
         stage('Deploy') { 
             steps {
-                echo "Deloying....."
+                sh '''
+                    java -jar target/*.jar
+                '''
             }
         }
-        stage('Timeout') { 
-            steps {
-                retry(3) {
-                    sh 'I not going to work :(('
-                }
-                
-            }
-        }
+        
     }
-    post {
-        always {
-            echo "I will alway run "
-        }
-        success {
-            echo "I success"
-        }
-        failure {
-            echo "I on failure"
-        }
-        unstable {
-            echo "I on unstable"
-        }
-    }
+    
 }
