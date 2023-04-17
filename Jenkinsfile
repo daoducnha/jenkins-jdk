@@ -32,6 +32,7 @@ pipeline {
         stage('Deploy') { 
             steps {
                 sh '''
+                    kill -9 $( lsof -t -i:8081)
                     java -jar target/*.jar
                 '''
             }
