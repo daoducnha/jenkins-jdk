@@ -17,9 +17,7 @@ pipeline {
             withMaven(
                 maven: 'jenkins-maven'
                 jdk: 'JDK 11'
-            )
-
-            steps {
+            ) {
                 echo "Testing......" 
                 sh 'mvn test'
             }
