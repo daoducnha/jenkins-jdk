@@ -6,7 +6,7 @@ pipeline {
             steps {
                 withMaven(
                     maven: 'jenkins-maven',
-                    jdk: 'JDK 18'
+                    jdk: 'JDK 8'
                     ) {
                         sh 'echo "Building....."'
                         sh '''
