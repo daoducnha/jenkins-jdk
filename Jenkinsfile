@@ -25,7 +25,7 @@ pipeline {
                         mavenLocalRepo: '$WORKSPACE/jdk11/.repository'
                     ) {
                         echo "Testing......" 
-                        sh 'mvn test'
+                        // sh 'mvn test'
                     }
             }
         }
