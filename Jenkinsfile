@@ -6,8 +6,7 @@ pipeline {
             withMaven(
                 maven: 'jenkins-maven'
                 jdk: 'JDK 11'
-            )
-            steps {
+            ) {
                 sh 'echo "Building....."'
                 sh '''
                     mvn clean package
