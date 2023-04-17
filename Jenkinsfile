@@ -9,6 +9,7 @@ pipeline {
                     jdk: 'JDK8',
                     mavenLocalRepo: '$WORKSPACE/jdk8/.repository'
                     ) {
+                        export JENKINS_MAVEN_AGENT_DISABLED=true
                         sh 'echo "Building....."'
                         sh '''
                             mvn clean package -DskipTests=true
