@@ -37,7 +37,7 @@ pipeline {
                         kill -9 $(lsof -t -i:8081)
                     fi
                     
-                    java -jar target/*.jar
+                    nohup java -jar target/*.jar > log.log 2>&1 &
                 '''
             }
         }
